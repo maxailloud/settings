@@ -1,0 +1,13 @@
+[alias]
+	st = status
+	dif = diff
+	co = checkout
+[color]
+	status = auto
+	branch = autodiff = auto
+[user]
+	name = Maxime AILLOUD
+	email = maxime.ailloud@gmail.com
+[core]
+	editor = vim
+	filemode = false
