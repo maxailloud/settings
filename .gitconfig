@@ -1,13 +1,19 @@
+[user]
+	name = Maxime AILLOUD
+	email = maxime.ailloud@gmail.com
 [alias]
 	st = status
 	dif = diff
 	co = checkout
+	rmall = "!sh -c 'git st | grep deleted | cut -c12- | xargs -i git rm {}'"
+[push]
+        default = tracking
+
 [color]
 	status = auto
-	branch = autodiff = auto
-[user]
-	name = Maxime AILLOUD
-	email = maxime.ailloud@gmail.com
+	branch = auto
+	diff   = auto
+	ui     = true
 [core]
-	editor = vim
+	editor = vi
 	filemode = false
