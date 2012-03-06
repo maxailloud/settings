@@ -5,7 +5,7 @@
 	st = status
 	dif = diff
 	co = checkout
-	rmall = "!sh -c 'git st | grep deleted | cut -c12- | xargs -i git rm {}'"
+	rmall = "!sh -c 'git rm $(git ls-files --deleted)'"
 [push]
         default = tracking
 
