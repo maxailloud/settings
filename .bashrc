@@ -37,7 +37,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+#force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -50,35 +50,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-function parse_git_branch {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo " ("${ref#refs/heads/}")" 
-}
-
-# set PS1
-SSHWINDOWTITLE=""
-
-if [[ $SSH_CLIENT == '' ]];
-then
-	PS1GLOBALCOLOR="\[\033[01;34m\]"
-else
-	PS1GLOBALCOLOR="\[\033[0;32m\]"
-	SSHWINDOWTITLE="SSH:"
-fi
-
-PS1USERCOLOR="\[\033[01;32m\]"
-
-if [[ $SUDO_USER != '' ]];
-then
-	PS1USERCOLOR="\[\033[0;31m\]"
-fi
-
 if [ "$color_prompt" = yes ]; then
-    export PS1="${debian_chroot:+($debian_chroot)}$PS1USERCOLOR\u@\h\[\033[00m\]:$PS1GLOBALCOLOR\w\[\033[00m\]$(parse_git_branch)\n\[\033[01;34m\]\#>\[\033[0m\] "
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    export PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\n\#> "
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
-
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -103,9 +79,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -l'
+alias ll='ls -lF'
 alias la='ls -al'
-#alias l='ls -CF'
+alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -126,3 +102,7 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+#PS1="${debian_chroot:+($debian_chroot)}$(whoami |sed 's/^.*\\//')@\h:\w$ "
+export PS1='\[\e[01;30m\]\t `if [ $? = 0 ]; then echo "\[\e[32m\]✔"; else echo "\[\e[31m\]✘"; fi` \[\e[00;37m\]'$(whoami |sed 's/^.*\\//')'\[\e[01;37m\]:`[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "\[\e[31m\]" || echo "\[\e[32m\]"`$(__git_ps1 "(%s)\[\e[00m\]")\[\e[01;34m\]\w\[\e[00m\]\$ '
+
+export PATH="$PATH:$HOME/bin" 
