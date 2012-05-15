@@ -1,0 +1,4 @@
+#!/bin/bash
+message=${1:-"Finished working"}
+notify-send -t 10000 -i ~/Images/r2d2-64.png "Process Finished" "$message"
+mplayer ~/Musique/r2d2.mp3
