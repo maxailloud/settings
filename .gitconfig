@@ -9,7 +9,7 @@
 	co = checkout
 	rmall = "!sh -c 'git rm $(git ls-files --deleted)'"
 [push]
-        default = tracking
+        default = upstream
 
 [color]
 	status = auto
