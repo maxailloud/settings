@@ -5,7 +5,7 @@
         excludesfile = /home/maxime/.gitignore_global
 [alias]
 	st = status
-	dif = diff
+	dif = diff --word-diff=color
 	co = checkout
 	cm = commit -m
 	rmall = "!sh -c 'git rm $(git ls-files --deleted)'"
