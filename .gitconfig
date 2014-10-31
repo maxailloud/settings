@@ -14,7 +14,8 @@
         updatefork = pull upstream master
 [push]
         default = upstream
-
+[pull]
+	rebase = preserve
 [color]
 	status = auto
 	branch = auto
