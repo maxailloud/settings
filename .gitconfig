@@ -25,3 +25,5 @@
 	filemode = false
 [status]
         showUntrackedFiles = all
+[branch]
+        autosetuprebase = always
