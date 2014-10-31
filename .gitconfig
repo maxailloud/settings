@@ -23,3 +23,5 @@
 [core]
 	editor = vi
 	filemode = false
+[status]
+        showUntrackedFiles = all
