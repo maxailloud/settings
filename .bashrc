@@ -111,3 +111,4 @@ export PS1='\[\e[01;30m\]\t `if [ $? = 0 ]; then echo "\[\e[32m\]✔"; else echo
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 
 export PATH="$PATH:$HOME/bin"
+export LANG=C
