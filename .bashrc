@@ -84,6 +84,8 @@ alias la='ls -al'
 alias l='ls -CF'
 alias fuck='sudo $(history -p \!\!)'
 alias gti='git'
+alias gps='git push'
+alias gpl='git pull'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
