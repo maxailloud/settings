@@ -25,7 +25,10 @@
 [core]
 	editor = vi
 	filemode = false
+	autocrlf = input
 [status]
         showUntrackedFiles = all
 [branch]
         autosetuprebase = always
+[fetch]
+	prune = true
