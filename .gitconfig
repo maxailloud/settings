@@ -2,17 +2,22 @@
 	name = Maxime AILLOUD
 	email = maxime.ailloud@gmail.com
 [core]
-        excludesfile = /home/maxime/.gitignore_global
+        excludesfile = /Users/max/.gitignore_global
 [alias]
 	st = status
 	dif = diff --word-diff=color
 	co = checkout
+	cob = checkout -b
 	cm = commit -m
 	rmall = "!sh -c 'git rm $(git ls-files --deleted)'"
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	amend = commit --amend
         updatefork = pull upstream master
         cp = cherry-pick
+	updatestage = !git checkout stage && git pull && git merge develop && git push && git co -
+	us = !git updatestage
+	feature = "!f() { git checkout -b feature/CTS-$1; }; f"
+	finish = !git checkout develop && git pull && git merge -
 [push]
         default = upstream
 [pull]
