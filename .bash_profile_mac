@@ -1,0 +1,49 @@
+source /usr/local/opt/git/etc/bash_completion.d/git-completion.bash
+source /usr/local/opt/git/etc/bash_completion.d/git-prompt.sh
+
+[ -z "$PS1" ] && return
+
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=5000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+alias ll='ls -lF'
+alias la='ls -al'
+alias l='ls -CF'
+alias fuck='sudo $(history -p \!\!)'
+alias gti='git'
+alias gps='git push'
+alias gpl='git pull'
+alias gcm='git co master'
+alias composer="php /usr/local/bin/composer"
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+export PS1='\[\e[01;34m\]\t `if [ $? = 0 ]; then echo "\[\e[32m\]✔"; else echo "\[\e[31m\]✘"; fi` \[\e[00;37m\]\u\[\e[01;37m\]:`[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "\[\e[31m\]" || echo "\[\e[32m\]"`$(__git_ps1 "(%s)\[\e[00m\]")\[\e[01;34m\]\w\[\e[00m\]\$ '
+
+NPM_PACKAGES=/Users/max/.npm-packages  
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export EDITOR='vim'
+export PATH="/usr/local/php5-7.0.4-20160310-143636/bin:$HOME/.composer/vendor/bin:$NPM_PACKAGES/bin:$PATH"
