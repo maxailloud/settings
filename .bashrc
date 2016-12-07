@@ -113,7 +113,9 @@ export PS1='\[\e[01;30m\]\t `if [ $? = 0 ]; then echo "\[\e[32m\]✔"; else echo
 ## This set the name of the term
 PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 
-export PATH="$PATH:$HOME/bin"
-export NODE_PATH="/usr/local/lib/node_modules/"
 export LANG=C
 export EDITOR='vim'
+
+NPM_PACKAGES=$HOME/.npm-packages
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+PATH="$NPM_PACKAGES/bin:$PATH"
