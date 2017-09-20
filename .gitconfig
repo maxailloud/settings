@@ -16,6 +16,8 @@
         cp = cherry-pick
 	updatestage = !git checkout stage && git pull && git merge develop && git push && git co -
 	us = !git updatestage
+	updatemaster = !git checkout master && git pull && git merge stage && git push && git co -
+	um = !git updatemaster
 	feature = "!f() { git checkout -b feature/CTS-$1; }; f"
 	finish = !git checkout develop && git pull && git merge -
 [push]
