@@ -20,6 +20,7 @@
 	um = !git updatemaster
 	feature = "!f() { git checkout -b feature/CTS-$1; }; f"
 	finish = !git checkout develop && git pull && git merge -
+	poush = push
 [push]
         default = upstream
 [pull]
