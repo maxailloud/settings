@@ -1,8 +1,6 @@
 [user]
-	name = Maxime AILLOUD
+	name = Maxime Ailloud
 	email = maxime.ailloud@gmail.com
-[core]
-        excludesfile = /Users/max/.gitignore_global
 [alias]
 	st = status
 	dif = diff --word-diff=color
@@ -18,13 +16,14 @@
 	us = !git updatestage
 	updatemaster = !git checkout master && git pull && git merge stage && git push && git co -
 	um = !git updatemaster
-	feature = "!f() { git checkout -b feature/CTS-$1; }; f"
+	feature = "!f() { git checkout -b feature/CPF-$1; }; f"
 	finish = !git checkout develop && git pull && git merge -
 	poush = push
 [push]
         default = upstream
+	autoSetupRemote = true
 [pull]
-	rebase = preserve
+	rebase = true
 [color]
 	status = auto
 	branch = auto
@@ -34,6 +33,7 @@
 	editor = vi
 	filemode = false
 	autocrlf = input
+	excludesfile = /Users/max/.gitignore_global
 [status]
         showUntrackedFiles = all
 [branch]
