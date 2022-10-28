@@ -12,17 +12,17 @@ alias gti='git'
 
 alias alert='osascript -e "display notification \"Go back to work\" with title \"Task completed\" sound name \"r2d2\""'
 
-key_info=(
-    Up "${terminfo[kcuu1]}"
-    Down "${terminfo[kcud1]}"
-)
+typeset -A key
+
+key[Up]=${terminfo[kcuu1]}
+key[Down]=${terminfo[kcud1]}
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "$terminfo[kcuu1]" up-line-or-beginning-search # Up
-bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
+bindkey "${key[Up]}" up-line-or-beginning-search # Up
+bindkey "${key[Down]}" down-line-or-beginning-search # Down
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
