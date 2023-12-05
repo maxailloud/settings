@@ -13,6 +13,7 @@
         updatefork = pull upstream master
         cp = cherry-pick
 	feature = "!f() { git checkout -b feature/CPF-$1; }; f"
+	hotfix = "!f() { git checkout -b hotfix/CPF-$1; }; f"
 	finish = !git checkout develop && git pull && git merge -
 	poush = push
 [push]
